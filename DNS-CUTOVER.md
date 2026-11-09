@@ -1,6 +1,6 @@
 # Pending drowsy.games cutover
 
-No DNS changes have been made. The root was serving Squarespace's Coming Soon page on 2026-11-09. No authenticated Squarespace administration session was available through background browser control; Chrome rejected the hidden-tab capability. DNS administration remains a manual step.
+No DNS changes have been made. The root was serving Squarespace's Coming Soon page on 2026-11-09. Squarespace opened at its login screen in the background in-app browser. Chrome rejected the hidden-tab capability, so its login state was not inspected. DNS administration remains a manual step requiring an authenticated Squarespace session.
 
 ## Observed public records
 
