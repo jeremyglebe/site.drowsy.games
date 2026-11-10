@@ -4,7 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="dark">
-  <meta name="description" content="Warhammer Fantasy campaigns and tools: The Revolt of Mallobaude, The Jewel of Lustria, and the 8th Edition Army Builder.">
+  <meta name="theme-color" content="#111418">
+  <meta name="description" content="Browser games, Warhammer Fantasy campaigns, and tabletop tools. Play sqrz and Secret Necromancer, or find your next campaign.">
   <title>Drowsy.Games</title>
   <style>
     :root {
@@ -13,72 +14,159 @@
       background: #111418;
       color: #f0eee8;
       font-synthesis: none;
+      --muted: #b6bbc2;
+      --accent: #b7cda9;
+      --border: #39414a;
     }
     * { box-sizing: border-box; }
     body { margin: 0; line-height: 1.6; }
-    main { width: min(100% - 2.5rem, 42rem); margin: clamp(2.5rem, 9vh, 6rem) auto; }
-    header { margin-bottom: 1.75rem; }
-    h1 { margin: 0; font-size: 1.65rem; font-weight: 650; letter-spacing: -.045em; }
-    h1 span { color: #b7cda9; }
-    header p { margin: .25rem 0 0; color: #b6bbc2; font-size: .95rem; }
-    ul { display: grid; gap: .875rem; margin: 0; padding: 0; list-style: none; }
-    .card {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) auto;
-      gap: .2rem 1rem;
-      padding: 1.25rem 1.4rem;
-      color: inherit;
-      text-decoration: none;
-      border: 1px solid #39414a;
-      border-radius: .75rem;
-      background: #1b2026;
+    main { width: min(100% - 2.5rem, 54rem); margin: clamp(1.75rem, 5vh, 3.5rem) auto; }
+    .site-header { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; flex-wrap: wrap; padding-bottom: 1.25rem; border-bottom: 1px solid var(--border); }
+    h1 { margin: 0; font-size: 1.65rem; font-weight: 650; letter-spacing: -.045em; line-height: 1.2; }
+    h1 span { color: var(--accent); }
+    .site-header p { margin: 0; color: var(--muted); font-size: .875rem; }
+    section { margin-top: 1.75rem; }
+    .section-title { display: flex; align-items: baseline; gap: .75rem; margin-bottom: .75rem; }
+    h2 { margin: 0; font-size: .85rem; font-weight: 650; letter-spacing: .09em; text-transform: uppercase; }
+    .section-title p { margin: 0; color: var(--muted); font-size: .8rem; }
+    ul { list-style: none; margin: 0; padding: 0; }
+    .games { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+    .games li { display: flex; }
+    .game {
+      display: flex; flex-direction: column; width: 100%; padding: 1.25rem;
+      border: 1px solid var(--border); border-top: 3px solid var(--game-accent);
+      border-radius: .5rem; background: #1b2026; color: inherit; text-decoration: none;
     }
-    .card:hover { background: #222b2d; border-color: #9cb48e; }
-    .card:focus-visible { outline: 3px solid #d2e6ba; outline-offset: 4px; }
-    h2 { margin: 0; font-size: 1.1rem; font-weight: 620; line-height: 1.4; }
-    .description { grid-column: 1; margin: .15rem 0 0; color: #bfc5cd; font-size: .925rem; }
-    .arrow { grid-column: 2; grid-row: 1 / 3; align-self: center; color: #b7cda9; font-size: 1.4rem; }
-    footer { margin-top: 1.75rem; color: #a5acb6; font-size: .75rem; }
+    .sqrz { --game-accent: #eac66d; }
+    .necromancer { --game-accent: #c7a4e8; }
+    .game-heading { display: flex; align-items: center; gap: .75rem; margin-bottom: .75rem; }
+    .game-icon { flex: 0 0 auto; width: 2.5rem; height: 2.5rem; color: var(--game-accent); }
+    h3 { margin: 0; font-size: 1.1rem; font-weight: 620; line-height: 1.35; }
+    .game p { margin: 0 0 .75rem; color: #c4cad1; font-size: .9rem; }
+    .game .details { font-size: .75rem; color: var(--muted); }
+    .game-bottom { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin-top: auto; padding-top: .5rem; }
+    .address { color: var(--muted); font-size: .75rem; overflow-wrap: anywhere; }
+    .action { flex-shrink: 0; color: var(--game-accent); font-size: .85rem; font-weight: 650; white-space: nowrap; }
+    .game:hover, .game:focus-visible { border-color: var(--game-accent); background: #22272e; }
+    .projects { border-top: 1px solid var(--border); }
+    .project { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: .15rem 1rem; padding: 1rem .75rem; color: inherit; text-decoration: none; border-bottom: 1px solid var(--border); }
+    .project h3 { font-size: 1rem; }
+    .project p { grid-column: 1; margin: 0; color: #bfc5cd; font-size: .85rem; }
+    .project .address { grid-column: 1; margin-top: .1rem; }
+    .project .arrow { grid-column: 2; grid-row: 1 / 4; align-self: center; color: var(--accent); font-size: 1.25rem; }
+    .project:hover, .project:focus-visible { background: #1b2026; }
+    a:focus-visible { outline: 3px solid #d2e6ba; outline-offset: 4px; }
+    footer { display: flex; justify-content: space-between; flex-wrap: wrap; gap: .3rem 1rem; margin-top: 1.5rem; color: #a5acb6; font-size: .7rem; }
+    footer p { margin: 0; }
+    @media (max-width: 580px) {
+      .games { grid-template-columns: 1fr; gap: .75rem; }
+      .site-header { display: block; }
+      .site-header p { margin-top: .4rem; }
+      section { margin-top: 1.5rem; }
+      .game { padding: 1rem; }
+      .project { padding: 1rem .25rem; }
+    }
     @media (max-width: 360px) {
       main { width: calc(100% - 2rem); }
-      .card { padding: 1rem; gap: .2rem .65rem; }
+      .game-bottom { align-items: flex-start; gap: .5rem; }
     }
-    @media (forced-colors: active) { .card { border-color: LinkText; } }
+    @media (forced-colors: active) {
+      .game, .project, .projects, .site-header { border-color: LinkText; }
+      .game-icon, .action, .arrow { color: LinkText; }
+    }
   </style>
 </head>
 <body>
   <main>
-    <header>
+    <header class="site-header">
       <h1>Drowsy<span>.Games</span></h1>
-      <p>Warhammer Fantasy campaigns &amp; tools.</p>
+      <p>Browser games, campaigns &amp; tabletop tools.</p>
     </header>
-    <nav aria-label="Campaigns and tools">
-      <!-- Edit each card's URL, title, and description here. -->
-      <ul>
+
+    <section aria-labelledby="games-heading">
+      <div class="section-title">
+        <h2 id="games-heading">Games</h2>
+        <p>Play in your browser</p>
+      </div>
+      <ul class="games">
         <li>
-          <a class="card" href="https://mallobaude.drowsy.games/">
-            <h2>The Revolt of Mallobaude</h2>
-            <p class="description">English campaign guide, rules, and army references.</p>
+          <a class="game sqrz" href="https://sqrz.drowsy.games/">
+            <div class="game-heading">
+              <svg class="game-icon" viewBox="0 0 40 40" fill="none" aria-hidden="true" focusable="false">
+                <path d="M7 7H33V33H7Z" fill="#5e4c24"/>
+                <path d="M7 7H33M7 33H33" stroke="#ee758a" stroke-width="3"/>
+                <path d="M7 7V33" stroke="#eac66d" stroke-width="3"/>
+                <path d="M33 7V33" stroke="#74b8e8" stroke-width="3"/>
+                <g fill="#f0eee8"><circle cx="7" cy="7" r="3.5"/><circle cx="33" cy="7" r="3.5"/><circle cx="7" cy="33" r="3.5"/><circle cx="33" cy="33" r="3.5"/></g>
+              </svg>
+              <h3>sqrz</h3>
+            </div>
+            <p>Connect the dots, close the squares, and try not to hand your friends the next point.</p>
+            <p class="details">Online multiplayer · Share a room code</p>
+            <div class="game-bottom">
+              <span class="address">sqrz.drowsy.games</span>
+              <span class="action">Play <span aria-hidden="true">&rarr;</span></span>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a class="game necromancer" href="https://necromancer.drowsy.games/">
+            <div class="game-heading">
+              <svg class="game-icon" viewBox="0 0 40 40" fill="none" aria-hidden="true" focusable="false">
+                <rect x="6" y="6" width="23" height="29" rx="2" stroke="currentColor" stroke-width="1.5" transform="rotate(-10 6 6)"/>
+                <rect x="12" y="3" width="23" height="29" rx="2" fill="#1b2026" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M23.5 9L25.5 15.5L31 17.5L25.5 19.5L23.5 26L21.5 19.5L16 17.5L21.5 15.5Z" fill="currentColor"/>
+              </svg>
+              <h3>Secret Necromancer</h3>
+            </div>
+            <p>A hidden-role card game of spells and suspicion. Find the Necromancer before the Grandmaster falls.</p>
+            <p class="details">4–5 players · Bots &amp; tutorial included</p>
+            <div class="game-bottom">
+              <span class="address">necromancer.drowsy.games</span>
+              <span class="action">Play <span aria-hidden="true">&rarr;</span></span>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="tabletop-heading">
+      <div class="section-title">
+        <h2 id="tabletop-heading">Tabletop</h2>
+        <p>Warhammer Fantasy</p>
+      </div>
+      <!-- Add public projects here. Keep titles, descriptions, and URLs together. -->
+      <ul class="projects">
+        <li>
+          <a class="project" href="https://whfb.drowsy.games/">
+            <h3>WHFB 8th Edition Army Builder</h3>
+            <p>Build and manage your Warhammer Fantasy army rosters.</p>
+            <span class="address">whfb.drowsy.games</span>
             <span class="arrow" aria-hidden="true">&rarr;</span>
           </a>
         </li>
         <li>
-          <a class="card" href="https://lustria.drowsy.games/">
-            <h2>The Jewel of Lustria</h2>
-            <p class="description">Expedition campaign rules and scenarios.</p>
+          <a class="project" href="https://mallobaude.drowsy.games/">
+            <h3>The Revolt of Mallobaude</h3>
+            <p>English campaign guide, rules, and army references.</p>
+            <span class="address">mallobaude.drowsy.games</span>
             <span class="arrow" aria-hidden="true">&rarr;</span>
           </a>
         </li>
         <li>
-          <a class="card" href="https://whfb.drowsy.games/">
-            <h2>WHFB 8th Edition Army Builder</h2>
-            <p class="description">Build and manage your Warhammer Fantasy army rosters.</p>
+          <a class="project" href="https://lustria.drowsy.games/">
+            <h3>The Jewel of Lustria</h3>
+            <p>Expedition campaign rules and scenarios.</p>
+            <span class="address">lustria.drowsy.games</span>
             <span class="arrow" aria-hidden="true">&rarr;</span>
           </a>
         </li>
       </ul>
-    </nav>
-    <footer>Unofficial fan projects. Not affiliated with Games Workshop.</footer>
+    </section>
+    <footer>
+      <p>Small games and things for the table.</p>
+      <p>Warhammer projects are unofficial and not affiliated with Games Workshop.</p>
+    </footer>
   </main>
 </body>
 </html>
